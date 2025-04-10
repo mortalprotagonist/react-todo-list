@@ -8,8 +8,9 @@ export default function app(){
                 <label htmlFor="item"> New Item</label>
                 <input type="text" id="item"></input>
             </div>
-            <button>Add task</button>
+            <button className="btn">Add task</button>
         </form>
+        <h1 className="header">Todo List</h1>
         </>
     )
 }

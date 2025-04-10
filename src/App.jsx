@@ -1,23 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
+import { NewTodoForm } from "./NewTodoForm";
+import { TodoList } from "./TodoList";
 
 export default function app() {
-    const [newItem, SetNewItem] = useState("")
-    const [todos, setTodos] = useState([])
+    
+    const [todos, setTodos] = useState(() =>{
+        const localValue = localStorage.getItem("ITEMS")
+        if (localValue === null) return []
+        return JSON.parse(localValue)
+    })
+    useEffect(() => {
+        localStorage.setItem("ITEMS",JSON.stringify(todos))
+    },[todos])
 
-    function handleSubmit(e) {
-        e.preventDefault()
 
+    function addTodo(title){
         setTodos(currentTodos => {
             return [
-                ...currentTodos, { id: crypto.randomUUID(), title: newItem, completed: false },
+                ...currentTodos, { id: crypto.randomUUID(), title, completed: false },
             ]
         })
-
-        SetNewItem("")
-
     }
-
     function toggleTodo(id, completed) {
         setTodos(currentTodos => {
             return currentTodos.map(todo => {
@@ -28,36 +32,17 @@ export default function app() {
             })
         })
     }
+
+    function deleteTodo(id){
+        setTodos(currentTodos =>{
+            return currentTodos.filter(todo => todo.id !== id)
+        })
+    }
     return (
         <>
-            <form className="new-item-form" onSubmit={handleSubmit}>
-                <div className="form-row">
-                    <label htmlFor="item"> New Item</label>
-                    <input
-                        value={newItem}
-                        type="text"
-                        id="item"
-                        onChange={e => SetNewItem(e.target.value)}>
-                    </input>
-                </div>
-                <button className="btn">Add task</button>
-            </form>
+            <NewTodoForm onSubmit={addTodo}/>
             <h1 className="header">Todo List</h1>
-            <ul className="list">
-                {todos.map(todo => {
-                    return (
-                        <li key={todo.id}>
-                            <label >
-                                <input type="checkbox" checked={todo.completed}
-                                    onChange={e => toggleTodo(todo.id, e.target.checked)}
-                                />
-                                {todo.title}
-                            </label>
-                            <button className="btn btn-danger"> Delete</button>
-                        </li>
-                    )
-                })}
-            </ul>
+            <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
         </>
     )
 }

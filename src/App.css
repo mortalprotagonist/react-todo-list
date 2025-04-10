@@ -4,8 +4,8 @@
 }
 
 body {
-  background: #333;
-  color: hsl(200, 100%, 90%);
+  background: #f0ecec;
+  color: hsl(200, 82%, 2%);
   max-width: 400px;
   padding: 1rem;
   margin: 0 auto;
@@ -24,9 +24,9 @@ body {
 }
 
 .btn {
-  background: hsl(200, 100%, 50%, 0.1);
-  border: 1px solid hsl(200, 100%, 50%);
-  color: hsl(200, 100%, 50%);
+  background: hsla(0, 93%, 47%, 0.921);
+  border: 1px solid hsla(0, 93%, 47%, 0.921);
+  color: hsla(0, 21%, 94%, 0.909);
   padding: 0.25em 0.5em;
   border-radius: 0.25em;
   cursor: pointer;
@@ -35,7 +35,7 @@ body {
 
 .btn:hover,
 .btn:focus-visible {
-  background: hsl(200, 100%, 50%, 0.2);
+  background: hsla(355, 88%, 48%, 0.728);
 }
 
 .btn.btn-danger {
@@ -46,20 +46,20 @@ body {
 
 .btn.btn-danger:hover,
 .btn.btn-danger:focus-visible {
-  background: hsl(0, 100%, 40%, 0.2);
+  background: hsla(0, 95%, 50%, 0.2);
 }
 
 .new-item-form input {
   outline: none;
-  border: 1px solid hsl(200, 100%, 40%);
-  background: hsl(200, 100%, 30%);
+  border: 1px solid hsl(6, 95%, 46%);
+  background: hsl(203, 13%, 88%);
   border-radius: 0.25em;
   padding: 0.25em 0.5em;
   color: hsl(200, 100%, 90%);
 }
 
 .new-item-form input:focus {
-  border: 1px solid hsl(200, 100%, 70%);
+  border: 1px solid hsl(27, 93%, 48%);
 }
 
 .header {
@@ -101,7 +101,9 @@ body {
 .list li:has(input:focus-visible) label {
   outline: 1px solid hsl(200, 100%, 50%);
 }
-
+.item{
+  color: blue;
+}
 .list li input {
   outline: none;
   width: 0;
@@ -116,7 +118,7 @@ body {
   display: block;
   width: 0.9rem;
   height: 0.9rem;
-  background: hsl(200, 100%, 90%);
+  background: hsla(0, 96%, 48%, 0.322);
   border-radius: 0.25em;
   display: flex;
   justify-content: center;

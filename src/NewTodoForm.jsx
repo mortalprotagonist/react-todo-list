@@ -17,10 +17,11 @@ export function NewTodoForm(props) { //here we can do props or destructuring usi
     return (
         <form className="new-item-form" onSubmit={handleSubmit}>
             <div className="form-row">
-                <label htmlFor="item"> New Item</label>
+                <label htmlFor="item"> New Task</label>
                 <input
                     value={newItem}
                     type="text"
+                    placeholder="Enter your task ..."
                     id="item"
                     onChange={e => SetNewItem(e.target.value)}>
                 </input>
